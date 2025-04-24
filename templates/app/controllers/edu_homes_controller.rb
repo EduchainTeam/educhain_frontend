@@ -1,4 +1,4 @@
-class EduHomeController < ApplicationController
+class EduHomesController < ApplicationController
   def show
     items = [
       {
