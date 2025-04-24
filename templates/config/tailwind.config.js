@@ -1,3 +1,6 @@
+
+const execSync = require('child_process').execSync;
+const output = execSync('bundle show educhain_view_components', { encoding: 'utf-8' });
 module.exports = {
   darkMode: 'class',
   content: [
@@ -5,7 +8,17 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*',
-    './app/components/**/*'
+    './app/components/**/*',
+    output.trim() + '/app/components/**/*.{erb,html,rb}'
+  ],
+  safelist: [
+    "w-13/52",
+    "w-9/52",
+    "w-11/52",
+    "w-12/52",
+    "w-7/52",
+    "w-33/52",
+    "w-10/52"
   ],
   theme: {
     screens: {
@@ -59,6 +72,9 @@ module.exports = {
       backgroundSize: {
         '85': '85%',
       },
+      fontSize: {
+        smaller: ['10px', '12px']
+      },
       colors: {
         primary: '#EF3023',
         black: '#222222',
@@ -98,8 +114,21 @@ module.exports = {
           700: '#4B4B4B',
           800: '#333333',
         },
+        // Color for footer
+
+        footer_red: {
+          200: "#fecaca",
+          500: "#ef4444"
+        }
       },
       width: {
+        "13/52": "25%",
+        "9/52": "17.307692%",
+        "11/52": "21.153846%",
+        "12/52": "23.076923%",
+        "7/52": "13.461539%",
+        "33/52": "63.461538%",
+        "10/52": "19.230770%",
         '1_col-3': '32%',
         'collection-card': 'calc(33%-12px)' // assumes 3 cards shown with space-x-6 (24px) in between.
       },
