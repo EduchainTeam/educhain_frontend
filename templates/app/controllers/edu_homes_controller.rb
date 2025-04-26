@@ -2,15 +2,15 @@ class EduHomesController < ApplicationController
   def show
     authors_items = [
       {
-        image_path: "educhain/view_components/albert.jpg",
+        image_path: "albert.jpg",
         full_name: "Имя Фамилия Отчество",
         description: "Ординарный профессор, научный руководитель по программам"
 
       },
       {
-        image_path: "educhain/view_components/lincoln.jpg",
-        full_name: "Abraham Lincoln",
-        description: "President of the United States, serving from 1861 until his assassination in 1865"
+        image_path: "lincoln.jpg",
+        full_name: "Фамилия Имя Отчество",
+        description: "Ординарный профессор, научный руководитель по программам"
       }
     ]
     authors_items_struct = Struct.new(:image_path, :full_name, :description)

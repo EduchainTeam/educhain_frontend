@@ -1,22 +1,36 @@
 <div class="container mx-auto mt-8">
-  <%= render Educhain::Authors::Component.new(title: @authors_title) do |author|  %>
-    <% @authors_items.each do |item| %>
-      <% author.with_item(
-           image_path: item.image_path,
-           full_name: item.full_name,
-           description: item.description,
-           ) %>
-    <% end %>
-  <% end %>
+  <div class="w-full flex flex-row justify-between">
+    <div class="m-8 mt-5 w-[632px] flex flex-col gap-2.5">
+      <div class="mb-3">Программа курса</div>
+      <div class="h-[116px] bg-gray-200 rounded-xl">1 модуль</div>
+      <div class="h-[116px] bg-gray-200 rounded-xl">2 модуль</div>
+      <div class="h-[116px] bg-gray-200 rounded-xl">3 модуль</div>
+      <div class="h-[116px] bg-gray-200 rounded-xl">4 модуль</div>
+    </div>
 
-  <%= render Educhain::Footer::Component.new(copyright: @footer_copyright) do |footer|  %>
-    <%= footer.with_logo(width: @logo_width, path: @logo_path, text: @logo_text) %>
-    <% @footer_items.each do |item| %>
-      <% footer.with_item(
-           width: item.width,
-           key: item.key,
-           links: item.links
-         ) %>
+    <div class="mr-8">
+      <%= render Educhain::Authors::Component.new(title: @authors_title, class: 'bg-white') do |author|  %>
+        <% @authors_items.each do |item| %>
+          <% author.with_item(
+               image_path: item.image_path,
+               full_name: item.full_name,
+               description: item.description,
+               ) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="mt-20">
+    <%= render Educhain::Footer::Component.new(copyright: @footer_copyright) do |footer|  %>
+      <%= footer.with_logo(width: @logo_width, path: @logo_path, text: @logo_text) %>
+      <% @footer_items.each do |item| %>
+        <% footer.with_item(
+             width: item.width,
+             key: item.key,
+             links: item.links
+           ) %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

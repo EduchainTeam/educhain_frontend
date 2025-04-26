@@ -61,6 +61,7 @@ module.exports = {
         },
       ],
       caption: ['0.75rem', '150%'],
+
     },
     extend: {
       aspectRatio: {
@@ -73,7 +74,10 @@ module.exports = {
         '85': '85%',
       },
       fontSize: {
-        smaller: ['10px', '12px']
+        smaller: ['10px', '12px'],
+        "2xl": ['24px', '32px'],
+        "xl_short": ['18px', '22px'],
+        "xs": ['0.75rem', '1rem']
       },
       colors: {
         primary: '#EF3023',
