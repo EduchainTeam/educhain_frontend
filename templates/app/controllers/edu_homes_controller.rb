@@ -2,7 +2,7 @@ class EduHomesController < ApplicationController
   def show
     authors_items = [
       {
-        image_path: "",
+        image_path: "albert.jpg",
         full_name: "Имя Фамилия Отчество",
         description: "Ординарный профессор, научный руководитель по программам"
 
