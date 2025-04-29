@@ -1,6 +1,23 @@
 class EduHomesController < ApplicationController
   def show
-    items = [
+    authors_items = [
+      {
+        image_path: "albert.jpg",
+        full_name: "Имя Фамилия Отчество",
+        description: "Ординарный профессор, научный руководитель по программам"
+
+      },
+      {
+        image_path: "",
+        full_name: "Фамилия Имя Отчество",
+        description: "Ординарный профессор, научный руководитель по программам"
+      }
+    ]
+    authors_items_struct = Struct.new(:image_path, :full_name, :description)
+    @authors_items = authors_items.map { authors_items_struct.new(**_1) }
+    @authors_title = "Авторы курса"
+
+    footer_items = [
       {
         width: "w-9/52",
         key: "Решения",
@@ -74,11 +91,11 @@ class EduHomesController < ApplicationController
         ]
       }
     ]
-    items_s = Struct.new(:width, :key, :links)
-    @items = items.map { items_s.new(**_1) }
+    footer_items_struct = Struct.new(:width, :key, :links)
+    @footer_items = footer_items.map { footer_items_struct.new(**_1) }
     @logo_path = "educhain_fat_type.svg"
-    @width = "w-13/52"
-    @text = "Проектные (техноэкономические) технологии и платформы кадрового суверенитета"
-    @copyright = "Copyright ©	2024 Educhain | All Right Reserved"
+    @logo_width = "w-13/52"
+    @logo_text = "Проектные (техноэкономические) технологии и платформы кадрового суверенитета"
+    @footer_copyright = "Copyright ©	2024 Educhain | All Right Reserved"
   end
 end
