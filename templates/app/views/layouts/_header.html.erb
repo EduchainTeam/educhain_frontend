@@ -1,0 +1,13 @@
+<header class="wrapper w-full">
+  <section>
+    <%= render Educhain::Navbar::Component.new(
+      brand_logo_url: "educhain/view_components/logo.svg",
+      current_user: spree_current_user,
+      profile_url: "#",
+      nav_links: Educhain::NavbarComponentPreview::PREVIEW_NAV_LINKS,
+      class: 'bg-sand px-0.5'
+    ) do %>
+      <%= render 'shared/search/search_bar', taxons: taxons, taxon: taxon, :locals => { :additional_classes => 'hidden lg:flex' } %>
+    <% end %>
+  </section>
+</header>
