@@ -1,8 +1,14 @@
 <div class="container mx-auto">
   <div class="mt-20">
-    <%= render Educhain::Footer::Component.new(copyright: @footer_copyright) do |footer|  %>
-      <%= footer.with_logo(width: @logo_width, path: @logo_path, text: @logo_text) %>
-      <% @footer_items.each do |item| %>
+    <%= render Educhain::Footer::Component.new(
+      copyright: "Copyright ©	2024 Educhain | All Right Reserved"
+    ) do |footer|  %>
+      <%= footer.with_logo(
+            width: "w-13/52",
+            path: "educhain_fat_type.svg",
+            text: "Проектные (техноэкономические) технологии и платформы кадрового суверенитета"
+          ) %>
+      <% footer.footer_items.each do |item| %>
         <% footer.with_item(
              width: item.width,
              key: item.key,
