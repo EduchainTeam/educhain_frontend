@@ -5,6 +5,7 @@
       current_user: spree_current_user,
       profile_url: "#",
       nav_links: Educhain::NavbarComponentPreview::PREVIEW_NAV_LINKS,
+      menu_items: Educhain::Configuration.new.nav_menu_items,
       class: 'bg-sand px-0.5'
     ) do %>
       <%= render 'shared/search/search_bar', taxons: taxons, taxon: taxon, :locals => { :additional_classes => 'hidden lg:flex' } %>
