@@ -118,12 +118,23 @@ module.exports = {
           700: '#4B4B4B',
           800: '#333333',
         },
-        // Color for footer
 
+        // Color for footer
         footer_red: {
           200: "#fecaca",
           500: "#ef4444"
+        },
+
+        //Color for card
+        card_gray: {
+          100: "#f3f4f6",
+          200: "#e5e7eb",
+          500: "#6b7280",
+          400: "#9ca3af",
+          600: "#4b5563",
+          700: "#374151"
         }
+
       },
       width: {
         "13/52": "25%",
