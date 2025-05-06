@@ -66,3 +66,4 @@ get '/cart_link', to: 'store#cart_link', as: :cart_link
 
 # educhain frontend routes
 resource :edu_home, only: :show
+resource :edu_product, only: :show

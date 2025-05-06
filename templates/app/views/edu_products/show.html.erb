@@ -1,0 +1,145 @@
+<div class="container mx-auto mt-8 bg-white">
+  <!-- Navbar -->
+  <%= render Educhain::Navbar::Component.new(
+    brand_logo_url: "educhain/view_components/logo.svg", 
+    current_user: @user, 
+    profile_url: "#",
+    nav_links: [
+      { name: "Каталог", href: "#" }, 
+      { name: "Контакты", href: "#" }, 
+      { name: "О нас", href: "#" }
+    ],
+    menu_items: @navbar_items
+  ) %>
+
+  <main class="flex flex-col gap-5 px-10 my-10">
+    <!-- BreadCrumbs -->
+    <nav aria-label="breadcrumb" class="text-lg text-gray-600">
+      Главная/Каталог/Подраздел
+    </nav>
+
+    <!-- Course title-->
+    <div class="flex flex-row gap-1">
+      <%= render Educhain::Icon::Component.new(name: "arrow-left-line", class: "size-8 fill-gray-600") %>
+      <h1 class="text-4xl font-bold text-gray-900">
+        Повышение квалификации по программе «Радиационая безопасность, учет, контроль, 
+        и физическая защита пунктов хранения радиоактивных веществ и радиоактивных отходов» 
+      </h1>
+    </div>
+
+    <!-- Grid with general information about the course -->
+    <div class="grid grid-cols-3 gap-5">
+      <!-- AboutProgram Card -->
+      <div class="col-span-2">
+        <%= render Educhain::Card::Component.new(class: "h-full overflow-auto") do %>
+          <%= render Educhain::Card::AboutProgram::Component.new(tags: @course.tags, title: "О программе:", text: @course.description) %>
+        <% end %>
+      </div>
+
+      <!-- Course Card -->
+      <div class="col-span-1 justify-items-center">
+        <%= render Educhain::Card::Course::Component.new( 
+          items: [
+            {label: "Артикул", value: "likey-РП-ПК-03"},
+            {label: "Форма обучения", value: "Очно-заочная"},
+            {label: "Документ", value: "Удостоверение"},
+            {label: "Продолжительность", value: "72 часа"}
+          ],
+          price: 10000,
+          cart_url: "#", 
+          favorite_url: "#"
+        ) %>
+      </div>
+
+      <!-- Address and DataEvent Cards -->
+      <div class="col-span-2">
+        <div class="flex flex-row gap-4 justify-between">
+          <!-- Address Cards -->
+          <div class="w-3/5">
+            <%= render Educhain::Card::Component.new do %>
+              <%= render Educhain::Card::Address::Component.new(
+                icon_name: "map-pin-line", 
+                address: {
+                  city_with_type: "г. Москва",
+                  street_with_type: "Проспект Длинного названия",
+                  house_with_type: "дом 12",
+                  block_with_type: "корпус 2",
+                  flat_with_type: "аудитория 23"
+                }
+              ) %>
+            <% end %>
+          </div>
+
+          <!-- DataEvent Card -->
+          <div class="w-2/5">
+            <%= render Educhain::Card::Component.new do %>
+              <%= render Educhain::Card::DateEvent::Component.new(
+                icon_name: "time-line", 
+                start: Date.new(2025, 04, 12), 
+                finish:Date.new(2025, 05, 12)
+              ) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- License -->
+      <p class="flex justify-center items-center col-span-1 text-gray-600 font-medium text-center">
+        Права принадлежат Ликей<br> 
+        Лицензия №127 от 11.09.2016
+      </p>
+    </div>
+
+    <!-- Grid with detailed information about the course -->
+    <div class="grid grid-cols-3 gap-5 pt-10">
+      <!-- Titles -->
+      <h1 class="col-span-2 text-2xl text-gray-900 font-bold">Программа курса</h1>
+      <h1 class="col-span-1 text-2xl text-gray-900 font-bold text-center"> Авторы курса</h1>
+
+      <!-- Course's program -->
+      <div class="flex flex-col gap-3 col-span-2">
+        <% @modules.each do |mod| %>
+          <%= render Educhain::Card::Component.new(class: "flex flex-row justify-between items-center gap-5 min-h-[120px] px-10 py-5") do %>
+            <!-- Module's discription -->
+            <div class="flex flex-col justify-start gap-2">
+              <h3><%= mod.position %> модуль</h3>
+              <h1 class="font-semibold text-2xl text-gray-900"><%= mod.name %></h1>
+            </div>
+
+            <!-- Button -->
+            <span class="flex justify-center items-center rounded-full size-12 bg-white cursor-pointer">
+              <%= render Educhain::Icon::Component.new(name: "arrow-down-s-line", class: "fill-gray-500 size-8") %>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+
+      <!-- Course's author -->
+      <div class="flex flex-col items-center">
+        <%= render Educhain::Authors::Component.new(class: '') do |author|  %>
+          <% @authors_items.each do |item| %>
+            <% author.with_item(
+              image_path: item.image_path,
+              full_name: item.full_name,
+              description: item.description,
+              ) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div class="mt-20">
+    <%= render Educhain::Footer::Component.new(copyright: @footer_copyright) do |footer|  %>
+      <%= footer.with_logo(width: @logo_width, path: @logo_path, text: @logo_text) %>
+      <% @footer_items.each do |item| %>
+        <% footer.with_item(
+              width: item.width,
+              key: item.key,
+              links: item.links
+            ) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
